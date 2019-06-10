@@ -42,8 +42,13 @@ func main() {
 	}
 
 	obj.print()
-	obj.printFirstName()
-	obj.updateName("XYZ")
+	// Creating a pointer object
+	// objPointer := &obj
+	// objPointer.updateName("XYZ")
+
+	// Shortcut to using pointer.
+	// We can directly use the type of struct while sending to the pointer
+	obj.updateName("QWE")
 	obj.printFirstName()
 }
 
@@ -55,6 +60,6 @@ func (p person) printFirstName() {
 	fmt.Printf("%+v\n", p.firstname)
 }
 
-func (p person) updateName(newFirstName string) {
-	p.firstname = newFirstName
+func (pointer *person) updateName(newFirstName string) {
+	(*pointer).firstname = newFirstName
 }
