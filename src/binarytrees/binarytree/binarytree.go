@@ -38,7 +38,7 @@ func NewNode(data int) *Node {
 
 // Build123a Implements 1-2-3 Binary Search tree in the first way
 // by calling newNode() three times, and using three pointer variables
-func Build123a() {
+func Build123a() *Node {
 	// var root = new(Node)
 	// root.Data = 2
 	// root.Left = NewNode(1)
@@ -50,18 +50,34 @@ func Build123a() {
 
 	root.Left = leftNode
 	root.Right = rightNode
-	root.PrintTree()
+
+	return root
 }
 
 // Build123b Implements 1-2-3 Binary Search tree in the second way
 // by calling newNode() three times, and using only one pointer variable
-func Build123b() {
+func Build123b() *Node {
 	var root = new(Node)
 	root.Data = 2
 	root.Left = NewNode(1)
 	root.Right = NewNode(3)
 
-	root.PrintTree()
+	return root
+}
+
+// Build123c Implements 1-2-3 Binary tree in the third way
+// by calling Insert three times
+func Build123c() *Node {
+	var root = NewNode(2)
+	root = Insert(root, 1)
+	root = Insert(root, 3)
+
+	return root
+}
+
+// Calculate the number of nodes in a binary tree
+func size() {
+
 }
 
 // PrintTree prints the current tree
