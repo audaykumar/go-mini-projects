@@ -1,5 +1,8 @@
 #Binaries to ignore
 *.exe
 
+#Package Archives
+*.a
+
 # Test binary, build with `go test -c`
 *.test
