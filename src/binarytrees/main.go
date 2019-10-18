@@ -1,12 +1,17 @@
 // This program is to practice the basics of a Binary Tree data structure
 package main
 
+import (
+	"binarytrees/binarytree"
+	"fmt"
+)
+
 func main() {
 
-	// a := binarytree.Build123a()
-	// fmt.Print("a: ")
-	// a.PrintTree()
-	// fmt.Println()
+	a := binarytree.Build123a()
+	fmt.Print("a: ")
+	a.PrintTree()
+	fmt.Println()
 
 	// b := binarytree.Build123b()
 	// fmt.Print("b: ")
