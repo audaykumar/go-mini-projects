@@ -1,8 +1,11 @@
-#Binaries to ignore
+# Binaries to ignore
 *.exe
 
-#Package Archives
+# Package Archives
 *.a
+
+# All files inside the pkg directory
+pkg/*
 
 # Test binary, build with `go test -c`
 *.test

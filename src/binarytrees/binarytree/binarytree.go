@@ -75,9 +75,28 @@ func Build123c() *Node {
 	return root
 }
 
-// Calculate the number of nodes in a binary tree
-func size() {
+// Size calculates the total number of nodes in a binary tree
+func (n *Node) Size() int {
+	if n.IsEmpty() {
+		return 0
+	}
+	return (n.Left.Size() + 1 + n.Right.Size())
 
+}
+
+// MaxDepth returns the maximum depth of the tree
+func (n *Node) MaxDepth() int {
+	if n.IsEmpty() {
+		return 0
+	}
+	ldepth := n.Left.MaxDepth()
+	rdepth := n.Right.MaxDepth()
+
+	if ldepth < rdepth {
+		return rdepth + 1
+	}
+
+	return ldepth + 1
 }
 
 // PrintTree prints the current tree
