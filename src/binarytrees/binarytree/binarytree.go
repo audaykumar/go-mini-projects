@@ -99,7 +99,21 @@ func (n *Node) MaxDepth() int {
 	return ldepth + 1
 }
 
-// PrintTree prints the current tree
+// MinValue returns the smallest value in the binary tree
+func (n *Node) MinValue() int {
+	if n.IsEmpty() {
+		fmt.Println("Tree is empty")
+		return 0
+	}
+
+	if n.Left.IsEmpty() {
+		return n.Data
+	}
+
+	return n.Left.MinValue()
+}
+
+// PrintTree prints the current tree in
 func (n *Node) PrintTree() {
 	if n.IsEmpty() {
 		return
@@ -107,4 +121,63 @@ func (n *Node) PrintTree() {
 	n.Left.PrintTree()
 	fmt.Print(n.Data, " ")
 	n.Right.PrintTree()
+}
+
+// PrintPostorder prints the tree in post order
+func (n *Node) PrintPostorder() {
+	if n.IsEmpty() {
+		return
+	}
+	n.Left.PrintPostorder()
+	n.Right.PrintPostorder()
+	fmt.Print(n.Data, " ")
+}
+
+// HasPathSum returns true if the given binary tree has a branch
+// whose elements add up to the given sum
+func (n *Node) HasPathSum(sum int) bool {
+	if n.IsEmpty() {
+		return sum == 0
+	}
+	sum -= n.Data
+	return n.Left.HasPathSum(sum) || n.Right.HasPathSum(sum)
+}
+
+// HasNoChildren returns true if the current node has no children, false
+// otherwise
+func (n *Node) HasNoChildren() bool {
+	return n.Left.IsEmpty() && n.Right.IsEmpty()
+}
+
+// PrintPaths will print all the paths from the root to the leaf nodes
+func (n *Node) PrintPaths() {
+	var pathsize = make([]int, 0, n.MaxDepth())
+
+	printPathsRecur(n, pathsize)
+}
+
+func printPathsRecur(n *Node, arr []int) {
+	if n.IsEmpty() {
+		return
+	}
+	// append this node to the path array
+	arr = append(arr, n.Data)
+
+	if n.HasNoChildren() {
+		printArray(arr)
+		return
+	}
+	// otherwise try both subtrees
+	printPathsRecur(n.Left, arr)
+	printPathsRecur(n.Right, arr)
+
+}
+
+// Utility that prints out an array on a line.
+func printArray(arr []int) {
+	fmt.Printf("\t")
+	for _, val := range arr {
+		fmt.Print(val, " ")
+	}
+	fmt.Println()
 }
