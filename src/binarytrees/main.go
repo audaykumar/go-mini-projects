@@ -47,4 +47,10 @@ func main() {
 	fmt.Printf("HasPathSum (%d): %t\n", sum, a.HasPathSum(sum))
 	fmt.Println("Tree Paths: ")
 	a.PrintPaths()
+	mirror := a.Mirror()
+	fmt.Print("Mirrored Tree: ")
+	mirror.PrintTree()
+	fmt.Println()
+	// a.DoubleTree()
+	// a.PrintTree()
 }

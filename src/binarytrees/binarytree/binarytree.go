@@ -181,3 +181,31 @@ func printArray(arr []int) {
 	}
 	fmt.Println()
 }
+
+// Mirror returns a mirror image of the given tree
+// with the children of every node swapped left-to-right
+func (n *Node) Mirror() *Node {
+
+	if n.IsEmpty() {
+		return nil
+	}
+
+	newTree := NewNode(n.Data)
+	newTree.Left = n.Left.Mirror()
+	newTree.Right = n.Right.Mirror()
+
+	newTree.Left, newTree.Right = newTree.Right, newTree.Left
+	return newTree
+}
+
+// DoubleTree adds a clone of each node as its left child in each subtree
+func (n *Node) DoubleTree() {
+	if n.IsEmpty() {
+		return
+	}
+	clone := NewNode(n.Data)
+	n.Left.DoubleTree()
+	n.Right.DoubleTree()
+
+	clone.Left, n.Left = n.Left, clone
+}
