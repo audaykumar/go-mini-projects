@@ -53,4 +53,9 @@ func main() {
 	fmt.Println()
 	// a.DoubleTree()
 	// a.PrintTree()
+	var c *binarytree.Node
+	c = binarytree.Insert(c, 5)
+	c = binarytree.Insert(c, 3)
+	c = binarytree.Insert(c, 8)
+	fmt.Println(binarytree.SameTree(a, c))
 }

@@ -209,3 +209,17 @@ func (n *Node) DoubleTree() {
 
 	clone.Left, n.Left = n.Left, clone
 }
+
+// SameTree returns true if 2 trees are exactly the same
+func SameTree(tree1 *Node, tree2 *Node) bool {
+	if tree1.IsEmpty() && tree2.IsEmpty() {
+		return true
+	} else if tree1.IsEmpty() || tree2.IsEmpty() {
+		return false
+	}
+
+	if tree1.Data == tree2.Data {
+		return SameTree(tree1.Left, tree2.Left) && SameTree(tree1.Right, tree2.Right)
+	}
+	return false
+}
